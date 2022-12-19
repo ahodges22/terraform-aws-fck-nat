@@ -1,13 +1,8 @@
-all: check README.md
+all: check readme
 
 .PHONY: check
 check:
-	terraform fmt -check=true -diff=true
-	terraform init
-	AWS_REGION=us-east-1 terraform validate
-	make -C example check
+	terraform init -backend=false && terraform validate
 
-README.md: variables.tf outputs.tf
-	sed -e '/^<!--terraform-docs-->/q' $@ > $@.tmp
-	terraform-docs md . >> $@.tmp
-	mv $@.tmp $@
+readme:
+	terraform-docs markdown table --hide requirements --output-file README.md --output-mode inject ./
