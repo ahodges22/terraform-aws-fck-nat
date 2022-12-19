@@ -90,5 +90,5 @@ resource "aws_route" "this" {
   count                  = var.enabled ? length(var.private_route_table_ids) : 0
   route_table_id         = var.private_route_table_ids[count.index]
   destination_cidr_block = "0.0.0.0/0"
-  network_interface_id   = aws_instance.this[count.index].primary_network_interface_id
+  network_interface_id   = element(concat(aws_instance.this.*.primary_network_interface_id, [""]), 0)
 }
