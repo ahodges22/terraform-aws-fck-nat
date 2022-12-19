@@ -3,6 +3,19 @@ A module to spin up a NAT instance running [fck-nat](https://github.com/AndrewGu
 
 Warning: Generally you should use a NAT gateway for production purposes. This module provides a very low cost solution for testing and development purposes.
 
+## Example Usage
+
+```
+module "nat-instance" {
+  source                      = "ahodges22/terraform-aws-fck-nat"
+  name                        = "dev"
+  vpc_id                      = "vpc-xxxx"
+  public_subnet               = "subnet-xxxx"
+  private_subnets_cidr_blocks = ["10.10.1.1/24"]
+  private_route_table_ids     = ["rtb-xxxx"]
+}
+```
+
 <!-- BEGIN_TF_DOCS -->
 ## Providers
 
