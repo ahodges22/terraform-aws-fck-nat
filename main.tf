@@ -78,8 +78,9 @@ resource "aws_launch_template" "this" {
 }
 
 resource "aws_instance" "this" {
-  count     = var.enabled ? 1 : 0
-  subnet_id = var.public_subnet
+  count             = var.enabled ? 1 : 0
+  subnet_id         = var.public_subnet
+  source_dest_check = false
 
   launch_template {
     id = aws_launch_template.this[count.index].id
