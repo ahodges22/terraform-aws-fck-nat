@@ -21,7 +21,7 @@ module "nat-instance" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.47.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.48.0 |
 
 ## Modules
 

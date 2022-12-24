@@ -85,6 +85,8 @@ resource "aws_instance" "this" {
   launch_template {
     id = aws_launch_template.this[count.index].id
   }
+
+  tags = local.common_tags
 }
 
 resource "aws_route" "this" {
